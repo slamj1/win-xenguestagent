@@ -1,0 +1,1 @@
+sc create XenSvc binPath= "c:\Program Files\XCP-ng\XenTools\xenguestagent.exe" type= own start = auto depend= WinMgmt DisplayName= "XCP-ng Xen Guest Agent"
