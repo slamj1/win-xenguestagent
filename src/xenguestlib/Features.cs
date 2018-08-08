@@ -38,6 +38,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading;
 using NetFwTypeLib;
+using BrandSupport;
 
 namespace xenwinsvc
 {
@@ -288,7 +289,7 @@ namespace xenwinsvc
         AXenStoreItem warn;
 
         public FeatureSetComputerName(IExceptionHandler exceptionhandler)
-            : base(Branding.Instance.getString("BRANDING_setComputerName"), "control/feature-setcomputername", "control/setcomputername/action", true, exceptionhandler)
+            : base(BrandingControl.getString("BRANDING_setComputerName"), "control/feature-setcomputername", "control/setcomputername/action", true, exceptionhandler)
         {
             name =  wmisession.GetXenStoreItem("control/setcomputername/name");
             state =  wmisession.GetXenStoreItem("control/setcomputername/state");

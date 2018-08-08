@@ -37,6 +37,7 @@ using System.Management;
 using Microsoft.Win32;
 using Microsoft.Win32.SafeHandles;
 using XenGuestLib;
+using BrandSupport;
 
 namespace xenwinsvc
 {
@@ -287,12 +288,12 @@ namespace xenwinsvc
                 RegistryKey key = Registry.LocalMachine.CreateSubKey("SYSTEM\\CurrentControlSet\\Control\\Citrix\\wfshell\\TWI",RegistryKeyPermissionCheck.ReadWriteSubTree);
                 string value = (string) key.GetValue("LogoffCheckSysModules","");
                 if (string.IsNullOrEmpty(value)) {
-                    value = Branding.Instance.getString("FILENAME_dpriv");
+                    value = BrandingControl.getString("FILENAME_dpriv");
                 }
                 else {
-                    if (!value.Contains(Branding.Instance.getString("FILENAME_dpriv")))
+                    if (!value.Contains(BrandingControl.getString("FILENAME_dpriv")))
                     {
-                        value = value + "," + Branding.Instance.getString("FILENAME_dpriv");
+                        value = value + "," + BrandingControl.getString("FILENAME_dpriv");
                     }
                 }
                 key.SetValue("LogoffCheckSysModules", value);
@@ -320,8 +321,8 @@ namespace xenwinsvc
                 {
                     AddToXDIgnoreApplicationList();
                     string path = (string)Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Citrix\\XenTools", "Install_Dir", "");
-                    string fullpath = string.Format("{0}\\" + Branding.Instance.getString("FILENAME_dpriv"), path);
-                    string cmdline = string.Format(Branding.Instance.getString("FILENAME_dpriv")+" {0}", comms.secret);
+                    string fullpath = string.Format("{0}\\" + BrandingControl.getString("FILENAME_dpriv"), path);
+                    string cmdline = string.Format(BrandingControl.getString("FILENAME_dpriv") + " {0}", comms.secret);
                     this.worker = new SafeWaitHandle(Win32Impl.CreateUserProcess(consoletoken, fullpath, cmdline), true);
                     workerWaiter = new ProcessWaitHandle(this.worker);
                     registeredWorkerWaiter = ThreadPool.RegisterWaitForSingleObject(workerWaiter, handleWorker, null, Timeout.Infinite, true);

@@ -8,9 +8,9 @@ namespace XenUpdater
     class Tasks : IDisposable
     {
         #region Constants
-        const string TASKNAME = XenVersions.BRANDING_updaterLong;
-        const string AUTHOR = XenVersions.BRANDING_manufacturerLong;
-        const string DESCRIPTION = XenVersions.BRANDING_updaterDesc;
+        const string TASKNAME = BrandSupport.XenVersions.BRANDING_updaterLong;
+        const string AUTHOR = BrandSupport.XenVersions.BRANDING_manufacturerLong;
+        const string DESCRIPTION = BrandSupport.XenVersions.BRANDING_updaterDesc;
 
         const string TaskPathSeparator = "\\";
         const string DateTimeFormatExpectedByCOM = "yyyy-MM-ddThh:mm:ss";

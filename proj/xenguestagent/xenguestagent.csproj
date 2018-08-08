@@ -47,9 +47,6 @@
     <CopyOut Include="..\..\src\xenguestagent\XenGuestAgent.exe.config" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="BrandSupport">
-      <HintPath>..\..\refdll\BrandSupport.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -70,6 +67,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\BrandSupport\BrandSupport.csproj">
+      <Project>{3c46d5f0-e82e-41b1-849b-d7b0fe335212}</Project>
+      <Name>BrandSupport</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="MyCopyFilesToOutputDirectory">

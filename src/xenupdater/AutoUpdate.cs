@@ -85,7 +85,6 @@ namespace XenUpdater
         ACXenStoreItem allowdriverupdate;
         ACXenStoreItem uuid;
         public Version version;
-        IBranding Branding;
         IGetReg getreg;
 
         public class CGetReg : IGetReg

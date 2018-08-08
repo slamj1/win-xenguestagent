@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BrandSupport;
+using System;
 using System.Diagnostics;
 
 namespace xenwinsvc
@@ -11,11 +12,11 @@ namespace xenwinsvc
         {
             this.wmisession = wmisession;
             el = new EventLog();
-            el.Source = Branding.Instance.getString("BRANDING_GuestAgentLogSource");
+            el.Source = BrandingControl.getString("BRANDING_GuestAgentLogSource");
             if (!EventLog.SourceExists(el.Source))
             {
                 //Create New Log       
-                EventLog.CreateEventSource(el.Source, Branding.Instance.getString("BRANDING_GuestAgentLogName"));
+                EventLog.CreateEventSource(el.Source, BrandingControl.getString("BRANDING_GuestAgentLogName"));
             }
         }
 

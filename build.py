@@ -46,12 +46,19 @@ branding = imp.load_module("branding",brandingFile,brandingPath,brandingDesc)
 def make_header():
     now = datetime.datetime.now()
 
-    file = open('src\\xenguestlib\\VerInfo.cs', 'w')
+    verinfofile = 'src\\BrandSupport\\VerInfo.cs'
+    file = open(verinfofile, 'w')
 
+    file.write('namespace BrandSupport {\n')
     file.write('public class XenVersions {\n')
     file.write('public const string Version="'+os.environ['MAJOR_VERSION']+'.'+os.environ['MINOR_VERSION']+'.'+os.environ['MICRO_VERSION']+'.'+os.environ['BUILD_NUMBER']+'";\n')
     for key,value in branding.branding.items():
         file.write("public const string BRANDING_"+key+" = \""+value.replace("\\","\\\\")+"\";\n")
+    for key, value in branding.filenames.items():
+        file.write("public const string FILENAME_"+key+" = \""+value.replace("\\","\\\\")+"\";\n")
+    for key, value in branding.resources.items():
+        file.write("public const string RESOURCE_"+key+" = \""+value.replace("\\","\\\\")+"\";\n")
+    file.write("}")
     file.write("}")
 
     file.close()
@@ -131,7 +138,7 @@ def copyfiles(name, subproj, debug=False):
     if not os.path.lexists(name):
         os.mkdir(name)
 
-    dst_path = os.sep.join([name, subproj])
+    dst_path = os.sep.join([name])
 
     if not os.path.lexists(dst_path):
         os.mkdir(dst_path)
@@ -159,6 +166,16 @@ if __name__ == '__main__':
     copyfiles('xenguestagent','xendpriv', debug[sys.argv[1]])
     copyfiles('xenguestagent','xenupdater', debug[sys.argv[1]])
 
-    listfile = callfnout(['git','ls-files'])
-    archive('xenguestagent\\source.tgz', listfile.splitlines(), tgz=True)
-    archive('xenguestagent.tar', ['xenguestagent','revision'])
+    for file in glob.glob(os.sep.join(['src', 'doc', '*'])):
+        dst_path = 'xenguestagent'
+        print("%s -> %s" % (file, dst_path))
+        shutil.copy(file, dst_path)
+
+    for file in glob.glob(os.sep.join(['src', 'scripts', '*'])):
+        dst_path = 'xenguestagent'
+        print("%s -> %s" % (file, dst_path))
+        shutil.copy(file, dst_path)		
+
+    #listfile = callfnout(['git','ls-files'])
+    #archive('xenguestagent\\source.tgz', listfile.splitlines(), tgz=True)
+    #archive('xenguestagent.tar', ['xenguestagent','revision'])

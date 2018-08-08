@@ -1,5 +1,5 @@
 
-XCP-ng Windows Management Agent (Development Version 99.99.99.X)
+XCP-ng Windows Management Agent
 
 Feedback: https://xcp-ng.org/forum/topic/274/xcp-ng-windows-management-agent
 
