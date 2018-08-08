@@ -57,13 +57,19 @@ def make_header():
     file.close()
 
 def shell(command):
-    print (command)
+    print(command)
     sys.stdout.flush()
-    pipe = os.popen(command, 'r', 1)
-    for line in pipe:
+	
+    with subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE) as p:
+        output, errors = p.communicate()
+    lines = output.splitlines()
+
+    for line in lines:
         print(line.rstrip())
 
-    return pipe.close()
+    p.wait()	
+		
+    return p.returncode
 
 
 def msbuild(name, debug = False):
