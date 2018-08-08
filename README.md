@@ -44,4 +44,4 @@ XenIface driver (and pre-requites of the XenIface driver) are installed
 on the Guest VM, in short: installed PV-Drivers.
 
 The XenGuestAgent requires Microsoft .Net Framework 3.5 or 4 and above
-to be installed onto he guest VM
+to be installed onto the guest VM
