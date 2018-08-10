@@ -61,9 +61,6 @@
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Presentation" />
-    <Reference Include="xenguestlib">
-      <HintPath>..\xenguestlib\obj\$(Configuration)\xenguestlib.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -75,6 +72,10 @@
     <ProjectReference Include="..\..\src\BrandSupport\BrandSupport.csproj">
       <Project>{3c46d5f0-e82e-41b1-849b-d7b0fe335212}</Project>
       <Name>BrandSupport</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\xenguestlib\xenguestlib.csproj">
+      <Project>{c628d716-5062-4a5c-904e-4abebab262e0}</Project>
+      <Name>xenguestlib</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
