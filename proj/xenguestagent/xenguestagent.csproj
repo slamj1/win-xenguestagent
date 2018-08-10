@@ -35,6 +35,9 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>xen.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\..\src\xenguestagent\XenService.cs">
       <SubType>Component</SubType>
@@ -73,6 +76,9 @@
       <Project>{3c46d5f0-e82e-41b1-849b-d7b0fe335212}</Project>
       <Name>BrandSupport</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="xen.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="MyCopyFilesToOutputDirectory">

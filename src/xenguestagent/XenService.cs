@@ -39,14 +39,15 @@ using Microsoft.VisualBasic;
 using System.Configuration.Install;
 using System.Reflection;
 using XenGuestLib;
+using BrandSupport;
 
-[assembly:AssemblyVersion(XenVersions.Version)]
-[assembly:AssemblyFileVersion(XenVersions.Version)]
-[assembly:AssemblyCompanyAttribute(XenVersions.BRANDING_manufacturerLong)]
-[assembly:AssemblyProductAttribute(XenVersions.BRANDING_toolsForVMs)]
-[assembly:AssemblyDescriptionAttribute(XenVersions.BRANDING_guestAgentLong)]
-[assembly:AssemblyTitleAttribute(XenVersions.BRANDING_guestAgentLong)]
-[assembly:AssemblyCopyrightAttribute(XenVersions.BRANDING_copyrightGuestAgent)]
+[assembly:AssemblyVersion(BrandSupport.XenVersions.Version)]
+[assembly: AssemblyFileVersion(BrandSupport.XenVersions.Version)]
+[assembly: AssemblyCompanyAttribute(BrandSupport.XenVersions.BRANDING_manufacturerLong)]
+[assembly: AssemblyProductAttribute(BrandSupport.XenVersions.BRANDING_toolsForVMs)]
+[assembly: AssemblyDescriptionAttribute(BrandSupport.XenVersions.BRANDING_guestAgentLong)]
+[assembly: AssemblyTitleAttribute(BrandSupport.XenVersions.BRANDING_guestAgentLong)]
+[assembly: AssemblyCopyrightAttribute(BrandSupport.XenVersions.BRANDING_copyrightGuestAgent)]
 
 
 namespace xenwinsvc
@@ -108,7 +109,7 @@ namespace xenwinsvc
             {
                 EventLog.WriteEntry("Failed to create management agent debug log : " + e.ToString());
             }
-            this.ServiceName = Branding.Instance.getString("BRANDING_guestAgent");
+            this.ServiceName = BrandingControl.getString("BRANDING_guestAgent");
             this.CanStop = true;
             this.CanHandleSessionChangeEvent = true;
             this.CanHandlePowerEvent = true;
@@ -182,7 +183,7 @@ namespace xenwinsvc
                     Debug.Print("Waiting for WMI capability to begin");
                     try
                     {
-                        EventLog.WriteEntry(Branding.Instance.getString("BRANDING_errNoWMI"));
+                        EventLog.WriteEntry(BrandingControl.getString("BRANDING_errNoWMI"));
                     }
                     catch { };
 
@@ -192,7 +193,7 @@ namespace xenwinsvc
                     if (activehandle == 0 ) {
                         try
                         {
-                            EventLog.WriteEntry(Branding.Instance.getString("BRANDING_errNoWMI"));
+                            EventLog.WriteEntry(BrandingControl.getString("BRANDING_errNoWMI"));
                         }
                         catch { };
                         starting = true;

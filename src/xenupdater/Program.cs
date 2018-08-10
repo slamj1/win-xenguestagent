@@ -38,6 +38,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security.AccessControl;
 using System.Threading;
+using BrandSupport;
 
 namespace XenUpdater
 {
@@ -148,11 +149,11 @@ namespace XenUpdater
         {
             internal static bool IsRunning()
             {
-                string mfg = Branding.GetString("BRANDING_manufacturer");
+                string mfg = BrandingControl.getString("BRANDING_manufacturer");
                 if (String.IsNullOrEmpty(mfg))
                     mfg = "Citrix";
 
-                string app = Branding.GetString("BRANDING_updater");
+                string app = BrandingControl.getString("BRANDING_updater");
                 if (String.IsNullOrEmpty(app))
                     app = "ManagementAgentUpdater";
 

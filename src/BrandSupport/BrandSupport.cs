@@ -21,7 +21,7 @@ namespace BrandSupport
 
                 return value;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return "Unknown Branding " + key;
             }

@@ -36,6 +36,7 @@ using System.ComponentModel;
 using System.Configuration.Install;
 using System.ServiceProcess;
 using XenGuestLib;
+using BrandSupport;
 
 namespace xenwinsvc
 {
@@ -52,8 +53,8 @@ namespace xenwinsvc
 
             processInstaller.Account = ServiceAccount.LocalSystem;
             serviceInstaller.StartType = ServiceStartMode.Automatic;
-            serviceInstaller.ServiceName = Branding.Instance.getString("BRANDING_guestagent");
-            serviceInstaller.Description = Branding.Instance.getString("BRANDING_guestServiceDesc");
+            serviceInstaller.ServiceName = BrandingControl.getString("BRANDING_guestagent");
+            serviceInstaller.Description = BrandingControl.getString("BRANDING_guestServiceDesc");
             serviceInstaller.ServicesDependedOn = new string[] { "Winmgmt", "CryptSvc" };
 
             Installers.Add(serviceInstaller);
