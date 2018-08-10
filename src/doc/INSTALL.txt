@@ -1,0 +1,24 @@
+
+XCP-ng Windows Management Agent
+
+Feedback: https://xcp-ng.org/forum/topic/274/xcp-ng-windows-management-agent
+
+Install
+
+- Install .net 4 or greater on the VM
+- Install PV-Drivers from Windows Update (https://xcp-ng.org/2018/04/23/the-future-of-vm-tools -> Section "A better model")
+- Create Folder c:\Program Files\XCP-ng\XenTools and copy THIS content into it
+- Import install.reg to registry (via double click)
+- Execute service_install.cmd (with admin rights)
+- Reboot the VM
+
+Uninstall
+
+- Execute service_uninstall.cmd (with admin rights)
+- Delete registry path HKLM\Software\XCP-ng\XenTools
+- Delete registry key HKLM\SYSTEM\CurrentControlSet\Control\ServicesPipeTimeout
+- Reboot the VM
+- Delete c:\Program Files\XCP-ng\XenTools
+
+
+

@@ -35,6 +35,9 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>xen.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\..\src\xenguestagent\XenService.cs">
       <SubType>Component</SubType>
@@ -47,9 +50,6 @@
     <CopyOut Include="..\..\src\xenguestagent\XenGuestAgent.exe.config" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="BrandSupport">
-      <HintPath>..\..\refdll\BrandSupport.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -61,15 +61,25 @@
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Presentation" />
-    <Reference Include="xenguestlib">
-      <HintPath>..\xenguestlib\obj\$(Configuration)\xenguestlib.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\BrandSupport\BrandSupport.csproj">
+      <Project>{3c46d5f0-e82e-41b1-849b-d7b0fe335212}</Project>
+      <Name>BrandSupport</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\xenguestlib\xenguestlib.csproj">
+      <Project>{c628d716-5062-4a5c-904e-4abebab262e0}</Project>
+      <Name>xenguestlib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="xen.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="MyCopyFilesToOutputDirectory">

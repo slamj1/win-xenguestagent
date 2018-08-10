@@ -39,13 +39,13 @@ using System.Threading;
 using XenGuestLib;
 
 
-[assembly:AssemblyVersion(XenVersions.Version)]
-[assembly:AssemblyFileVersion(XenVersions.Version)]
-[assembly:AssemblyCompanyAttribute(XenVersions.BRANDING_manufacturerLong)]
-[assembly:AssemblyProductAttribute(XenVersions.BRANDING_toolsForVMs)]
-[assembly:AssemblyDescriptionAttribute(XenVersions.BRANDING_xenDprivDesc)]
-[assembly:AssemblyTitleAttribute(XenVersions.BRANDING_xenDprivDesc)]
-[assembly:AssemblyCopyrightAttribute(XenVersions.BRANDING_copyrightXenDpriv)]
+[assembly: AssemblyVersion(BrandSupport.XenVersions.Version)]
+[assembly: AssemblyFileVersion(BrandSupport.XenVersions.Version)]
+[assembly: AssemblyCompanyAttribute(BrandSupport.XenVersions.BRANDING_manufacturerLong)]
+[assembly: AssemblyProductAttribute(BrandSupport.XenVersions.BRANDING_toolsForVMs)]
+[assembly: AssemblyDescriptionAttribute(BrandSupport.XenVersions.BRANDING_xenDprivDesc)]
+[assembly: AssemblyTitleAttribute(BrandSupport.XenVersions.BRANDING_xenDprivDesc)]
+[assembly: AssemblyCopyrightAttribute(BrandSupport.XenVersions.BRANDING_copyrightXenDpriv)]
 
 namespace svc_depriv
 {

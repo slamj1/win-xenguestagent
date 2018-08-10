@@ -29,9 +29,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BrandSupport">
-      <HintPath>..\..\refdll\BrandSupport.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
@@ -55,11 +52,9 @@
     <Compile Include="..\..\src\xenguestlib\NetInfo.cs" />
     <Compile Include="..\..\src\xenguestlib\PVInstallation.cs" />
     <Compile Include="..\..\src\xenguestlib\Snapshot.cs" />
-    <Compile Include="..\..\src\xenguestlib\VerInfo.cs" />
     <Compile Include="..\..\src\xenguestlib\VolumeInfo.cs" />
     <Compile Include="..\..\src\xenguestlib\Win32Impl.cs" />
     <Compile Include="..\..\src\xenguestlib\Wmi.cs" />
-    <Compile Include="..\..\src\xenguestlib\Branding.cs" />
     <Compile Include="..\..\src\xenguestlib\XenAppXenDesktop.cs" />
     <Compile Include="Util.cs" />
     <Compile Include="XenAppSessionInfo.cs" />
@@ -77,6 +72,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\BrandSupport\BrandSupport.csproj">
+      <Project>{3c46d5f0-e82e-41b1-849b-d7b0fe335212}</Project>
+      <Name>BrandSupport</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

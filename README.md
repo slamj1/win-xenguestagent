@@ -1,4 +1,4 @@
-XenGuestAgent - The XenServer Windows Guest Agent Service
+XenGuestAgent - The XCP-ng Windows Guest Agent Service
 ==========================================
 
 XenGuestAgent is a Windows service which provides support for user-level
@@ -32,7 +32,7 @@ VS location of visual studio
 Commands to build
 -----------------
 
-    git clone http://github.com/xenserver/win-xenguestagent
+    git clone http://github.com/xcp-ng/win-xenguestagent
     cd win-xenguestagent
     .\build.py [checked | free]
 
@@ -41,7 +41,7 @@ Runtime Dependencies
 
 To communicate with the host domains, XenGuestAgent requires that the
 XenIface driver (and pre-requites of the XenIface driver) are installed
-on the Guest VM.
+on the Guest VM, in short: installed PV-Drivers.
 
 The XenGuestAgent requires Microsoft .Net Framework 3.5 or 4 and above
-to be installed ont he guest VM
+to be installed onto the guest VM
