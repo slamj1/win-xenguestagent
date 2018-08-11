@@ -1,5 +1,6 @@
 
 branding = {
+        "vendorPrefix" : "XCPng",
         "toolsName" : "XCP-ng Tools",
         "installerProductName" : "XCP-ng Tools Installer",
         "manufacturer" : "XCP-ng",

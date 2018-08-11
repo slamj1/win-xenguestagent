@@ -285,7 +285,7 @@ namespace xenwinsvc
                 // the solution is to ensure we are added to a registry entry at 
                 // HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Citrix\wfshell\TWI\LogoffCheckSysModules 
 
-                RegistryKey key = Registry.LocalMachine.CreateSubKey("SYSTEM\\CurrentControlSet\\Control\\Citrix\\wfshell\\TWI",RegistryKeyPermissionCheck.ReadWriteSubTree);
+                RegistryKey key = Registry.LocalMachine.CreateSubKey("SYSTEM\\CurrentControlSet\\Control\\XCP-ng\\wfshell\\TWI",RegistryKeyPermissionCheck.ReadWriteSubTree);
                 string value = (string) key.GetValue("LogoffCheckSysModules","");
                 if (string.IsNullOrEmpty(value)) {
                     value = BrandingControl.getString("FILENAME_dpriv");
@@ -320,7 +320,7 @@ namespace xenwinsvc
                 try
                 {
                     AddToXDIgnoreApplicationList();
-                    string path = (string)Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Citrix\\XenTools", "Install_Dir", "");
+                    string path = (string)Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\XCP-ng\\XenTools", "Install_Dir", "");
                     string fullpath = string.Format("{0}\\" + BrandingControl.getString("FILENAME_dpriv"), path);
                     string cmdline = string.Format(BrandingControl.getString("FILENAME_dpriv") + " {0}", comms.secret);
                     this.worker = new SafeWaitHandle(Win32Impl.CreateUserProcess(consoletoken, fullpath, cmdline), true);

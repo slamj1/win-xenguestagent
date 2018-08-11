@@ -132,7 +132,7 @@ namespace XenUpdater
             {
                 string installstate;
 
-                installstate = (string)Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Citrix\\XenToolsInstaller", "InstallStatus", "Installed");
+                installstate = (string)Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\XCP-ng\\XenToolsInstaller", "InstallStatus", "Installed");
                 if (installstate == null)
                     installstate = "Installed";
 
@@ -184,7 +184,7 @@ namespace XenUpdater
                 return false;
             }
 
-            if ((int)getreg.GetReg("HKEY_LOCAL_MACHINE\\SOFTWARE\\Citrix\\XenTools", "DisableAutoUpdate", 0) != 0)
+            if ((int)getreg.GetReg("HKEY_LOCAL_MACHINE\\SOFTWARE\\XCP-ng\\XenTools", "DisableAutoUpdate", 0) != 0)
             {
                 session.Log("Guest disallowed updates");
                 return false;
@@ -218,7 +218,7 @@ namespace XenUpdater
 
             if (poolAllowsDriverInstall)
             {
-                driverInstall = (string)getreg.GetReg("HKEY_LOCAL_MACHINE\\Software\\Citrix\\XenTools\\AutoUpdate", "InstallDrivers", BrandingControl.getString("BRANDING_allowDriverUpdate"));
+                driverInstall = (string)getreg.GetReg("HKEY_LOCAL_MACHINE\\Software\\XCP-ng\\XenTools\\AutoUpdate", "InstallDrivers", BrandingControl.getString("BRANDING_allowDriverUpdate"));
                 if (!(driverInstall.Equals("YES") || driverInstall.Equals("NO")))
                 {
                     session.Log("Unexpected value of AutoUpdate\\InstallDrivers, assuming you meant " + BrandingControl.getString("BRANDING_allowDriverUpdate"));
@@ -266,7 +266,7 @@ namespace XenUpdater
             if (String.IsNullOrEmpty(url))
                 url = "https://pvupdates.vmd.citrix.com/updates.v2.tsv";
 
-            string identify = (string)getreg.GetReg("HKEY_LOCAL_MACHINE\\Software\\Citrix\\XenTools\\AutoUpdate", "Identify", "NO");
+            string identify = (string)getreg.GetReg("HKEY_LOCAL_MACHINE\\Software\\XCP-ng\\XenTools\\AutoUpdate", "Identify", "NO");
             if (identify.Equals("YES"))
             {
                 url += "?id=" + uuid.Value.Substring(4);
@@ -275,7 +275,7 @@ namespace XenUpdater
             if (update_url.Exists)
                 url = update_url.Value;
 
-            url = (string)getreg.GetReg("HKEY_LOCAL_MACHINE\\SOFTWARE\\Citrix\\XenTools", "update_url", url);
+            url = (string)getreg.GetReg("HKEY_LOCAL_MACHINE\\SOFTWARE\\XCP-ng\\XenTools", "update_url", url);
 
             if (String.IsNullOrEmpty(url))
             {
@@ -287,7 +287,7 @@ namespace XenUpdater
             string contents = null;
             try
             {
-                string userAgent = (string)getreg.GetReg("HKEY_LOCAL_MACHINE\\SOFTWARE\\Citrix\\XenTools\\AutoUpdate", "UserAgent", BrandingControl.getString("BRANDING_userAgent"));
+                string userAgent = (string)getreg.GetReg("HKEY_LOCAL_MACHINE\\SOFTWARE\\XCP-ng\\XenTools\\AutoUpdate", "UserAgent", BrandingControl.getString("BRANDING_userAgent"));
                 session.Log("This is my user agent : " + userAgent);
                 client.AddHeader("User-Agent", userAgent);
                 contents = client.DownloadString(url);
@@ -396,8 +396,8 @@ namespace XenUpdater
             // "<Program Files>\Citrix\XenTools"
             string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "Citrix\\XenTools");
             string regPath = (Win32Impl.Is64BitOS()) ? 
-                            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Citrix\\XenTools" :
-                            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Citrix\\XenTools";
+                            "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\XCP-ng\\XenTools" :
+                            "HKEY_LOCAL_MACHINE\\SOFTWARE\\XCP-ng\\XenTools";
             string targetPath = (string)Registry.GetValue(regPath, "Install_Dir", path);
             return String.IsNullOrEmpty(targetPath) ? path : targetPath;
         }
@@ -464,7 +464,7 @@ namespace XenUpdater
                 complete = false;
                 error = false;
 
-                string userAgent = (string)getreg.GetReg("HKEY_LOCAL_MACHINE\\SOFTWARE\\Citrix\\XenTools\\AutoUpdate", "UserAgent", BrandingControl.getString("BRANDING_userAgent"));
+                string userAgent = (string)getreg.GetReg("HKEY_LOCAL_MACHINE\\SOFTWARE\\XCP-ng\\XenTools\\AutoUpdate", "UserAgent", BrandingControl.getString("BRANDING_userAgent"));
                 client = new WebClient();
                 client.Headers.Add("User-Agent", userAgent);
                 client.DownloadFileCompleted += new System.ComponentModel.AsyncCompletedEventHandler(DownloadCompleted);

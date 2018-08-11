@@ -83,7 +83,7 @@ namespace XenUpdater
                 {
                     if (xenbase == null)
                     {
-                        ManagementPath path = new ManagementPath("CitrixXenStoreBase");
+                        ManagementPath path = new ManagementPath(BrandSupport.XenVersions.BRANDING_vendorPrefix + "XenStoreBase");
                         ManagementClass cls = new ManagementClass(Scope, path, null);
                         ManagementObjectCollection col = cls.GetInstances();
                         xenbase = GetFirst(col);
@@ -172,7 +172,7 @@ namespace XenUpdater
             // call EndSession if this name already exists
             try 
             {
-                ObjectQuery obj = new ObjectQuery(String.Format("SELECT * FROM CitrixXenStoreSession WHERE Id=\"Citrix Xen Service: {0}\"", name));
+                ObjectQuery obj = new ObjectQuery(String.Format("SELECT * FROM " + BrandSupport.XenVersions.BRANDING_vendorPrefix + "XenStoreSession WHERE Id=\"Citrix Xen Service: {0}\"", name));
                 ManagementObjectSearcher mobs = new ManagementObjectSearcher(Base.Scope, obj); ;
                 Session = WmiBase.GetFirst(mobs.Get());
                 Session.InvokeMethod("EndSession", null);
@@ -186,7 +186,7 @@ namespace XenUpdater
             input["ID"] = String.Format("Citrix Xen Service: {0}", name);
             ManagementBaseObject output = Base.XenBase.InvokeMethod("AddSession", input, null);
             UInt32 sessionid = (UInt32)output["SessionId"];
-            ObjectQuery query = new ObjectQuery("SELECT * from CitrixXenStoreSession WHERE SessionId=" + sessionid.ToString());
+            ObjectQuery query = new ObjectQuery("SELECT * from " + BrandSupport.XenVersions.BRANDING_vendorPrefix + "XenStoreSession WHERE SessionId=" + sessionid.ToString());
             ManagementObjectSearcher objects = new ManagementObjectSearcher(Base.Scope, query);
             Session = WmiBase.GetFirst(objects.Get());
         }

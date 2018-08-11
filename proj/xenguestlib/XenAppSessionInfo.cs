@@ -65,7 +65,7 @@ namespace xenwinsvc
             int currentSessionCount = 0;
             try
             {
-                using (RegistryKey XenAppSessionKey = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Citrix\\Ica\\Session\\CtxSessions"))
+                using (RegistryKey XenAppSessionKey = Registry.LocalMachine.OpenSubKey("SOFTWARE\\XCP-ng\\Ica\\Session\\CtxSessions"))
                 {
                     currentSessionCount = XenAppSessionKey.ValueCount;
                 }

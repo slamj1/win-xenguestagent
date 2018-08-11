@@ -159,11 +159,11 @@ namespace xenwinsvc
                 string installstate;
                 if (Win32Impl.is64BitOS() && (!Win32Impl.isWOW64()))
                 {
-                    installstate = (string)Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Citrix\\XenToolsInstaller", "InstallStatus", "Installed");
+                    installstate = (string)Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\XCP-ng\\XenToolsInstaller", "InstallStatus", "Installed");
                 }
                 else
                 {
-                    installstate = (string)Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Citrix\\XenToolsInstaller", "InstallStatus", "Installed");
+                    installstate = (string)Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\XCP-ng\\XenToolsInstaller", "InstallStatus", "Installed");
                 }
                 if (installstate == null)
                     installstate = "Installed";
@@ -270,10 +270,10 @@ namespace xenwinsvc
             {
                 if (!installing())
                 {
-                    pvmajor.value = ((int)Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Citrix\\XenTools", "MajorVersion", 0)).ToString();
-                    pvminor.value = ((int)Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Citrix\\XenTools", "MinorVersion", 0)).ToString();
-                    pvmicro.value = ((int)Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Citrix\\XenTools", "MicroVersion", 0)).ToString();
-                    pvbuild.value = ((int)Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Citrix\\XenTools", "BuildVersion", 0)).ToString();
+                    pvmajor.value = ((int)Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\XCP-ng\\XenTools", "MajorVersion", 0)).ToString();
+                    pvminor.value = ((int)Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\XCP-ng\\XenTools", "MinorVersion", 0)).ToString();
+                    pvmicro.value = ((int)Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\XCP-ng\\XenTools", "MicroVersion", 0)).ToString();
+                    pvbuild.value = ((int)Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\XCP-ng\\XenTools", "BuildVersion", 0)).ToString();
                     WmiBase.Singleton.Kick();
                 }
             }
@@ -294,10 +294,10 @@ namespace xenwinsvc
                 string vdapath;
                 if (Win32Impl.is64BitOS() && (!Win32Impl.isWOW64()))
                 {
-                    vdapath = "Software\\Wow6432Node\\Citrix\\VirtualDesktopAgent";
+                    vdapath = "Software\\Wow6432Node\\XCP-ng\\VirtualDesktopAgent";
                 }
                 else {
-                    vdapath = "Software\\Citrix\\VirtualDesktopAgent";
+                    vdapath = "Software\\XCP-ng\\VirtualDesktopAgent";
                 }
                 try
                 {
