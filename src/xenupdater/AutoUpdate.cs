@@ -397,7 +397,7 @@ namespace XenUpdater
         private string GetTarget()
         {
             // "<Program Files>\Citrix\XenTools"
-            string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "Citrix\\XenTools");
+            string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "XCP-ng\\XenTools");
             string regPath = (Win32Impl.Is64BitOS()) ? 
                             "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\XCP-ng\\XenTools" :
                             "HKEY_LOCAL_MACHINE\\SOFTWARE\\XCP-ng\\XenTools";

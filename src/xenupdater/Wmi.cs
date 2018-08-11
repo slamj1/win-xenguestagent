@@ -172,7 +172,7 @@ namespace XenUpdater
             // call EndSession if this name already exists
             try 
             {
-                ObjectQuery obj = new ObjectQuery(String.Format("SELECT * FROM " + BrandSupport.XenVersions.BRANDING_vendorPrefix + "XenStoreSession WHERE Id=\"Citrix Xen Service: {0}\"", name));
+                ObjectQuery obj = new ObjectQuery(String.Format("SELECT * FROM " + BrandSupport.XenVersions.BRANDING_vendorPrefix + "XenStoreSession WHERE Id=\"" + BrandSupport.XenVersions.BRANDING_manufacturer + " Xen Service: {0}\"", name));
                 ManagementObjectSearcher mobs = new ManagementObjectSearcher(Base.Scope, obj); ;
                 Session = WmiBase.GetFirst(mobs.Get());
                 Session.InvokeMethod("EndSession", null);
@@ -183,7 +183,7 @@ namespace XenUpdater
 
             // create this session
             ManagementBaseObject input = Base.XenBase.GetMethodParameters("AddSession");
-            input["ID"] = String.Format("Citrix Xen Service: {0}", name);
+            input["ID"] = String.Format(BrandSupport.XenVersions.BRANDING_manufacturer + " Xen Service: {0}", name);
             ManagementBaseObject output = Base.XenBase.InvokeMethod("AddSession", input, null);
             UInt32 sessionid = (UInt32)output["SessionId"];
             ObjectQuery query = new ObjectQuery("SELECT * from " + BrandSupport.XenVersions.BRANDING_vendorPrefix + "XenStoreSession WHERE SessionId=" + sessionid.ToString());
