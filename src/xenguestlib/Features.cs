@@ -879,7 +879,7 @@ namespace xenwinsvc
                     }
                 }
 
-                if ((int)Registry.GetValue("HKEY_LOCAL_MACHINE\\Software\\Citrix\\Xentools", "NoRemoteExecution", 0)!=0) {
+                if ((int)Registry.GetValue("HKEY_LOCAL_MACHINE\\Software\\XCp-ng\\Xentools", "NoRemoteExecution", 0)!=0) {
                     this.stderr.value = "VM Blocked Remote Execution By Registry Key";
                     result = FeatureXSBatchCommand.FAILURE;
                     state.value = result;

@@ -94,7 +94,7 @@ namespace xenwinsvc
     public class IpSettings
     {
         static List <IpSettingItem> iplist = new List<IpSettingItem>();
-        private static readonly string IP_INFO_REGISTRY_KEY_PATH = "HKEY_LOCAL_MACHINE\\Software\\Citrix\\Xentools";
+        private static readonly string IP_INFO_REGISTRY_KEY_PATH = "HKEY_LOCAL_MACHINE\\Software\\XCP-ng\\Xentools";
         private static readonly string IP_INFO_REGISTRY_VALUE_NAME = "ipSettings";
         private static readonly string IP_INFO_COMPONENT_SEPARATOR = ","; // separate component of a ip configurations, like mac, ipv4/ipv6, etc
         private static readonly int IP_INFO_COMPONENT_NUMBER = 5; // the number of the ip info components, like mac, ipv4/6, etc
