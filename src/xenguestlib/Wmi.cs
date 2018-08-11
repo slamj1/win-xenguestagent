@@ -743,7 +743,7 @@ namespace xenwinsvc
             // Otherwise we have to create a new session from scratch
             try
             {
-                ObjectQuery obq = new ObjectQuery(String.Format("SELECT * from " + BrandSupport.XenVersions.BRANDING_vendorPrefix + "XenStoreSession WHERE Id=\"Citrix Xen Service: {0}\"", sessionqualifier));
+                ObjectQuery obq = new ObjectQuery(String.Format("SELECT * from " + BrandSupport.XenVersions.BRANDING_vendorPrefix + "XenStoreSession WHERE Id=\"" + BrandSupport.XenVersions.BRANDING_manufacturer + " Xen Service: {0}\"", sessionqualifier));
                 ManagementObjectSearcher mobs = new ManagementObjectSearcher(wmibase.Scope, obq); ;
                 session = WmiBase.getFirst(mobs.Get());
                 session.InvokeMethod("EndSession", null);
@@ -752,7 +752,7 @@ namespace xenwinsvc
             {
             }
             ManagementBaseObject inparam = wmibase.XenBase.GetMethodParameters("AddSession");
-            inparam["ID"] = String.Format("Citrix Xen Service: {0}", sessionqualifier);
+            inparam["ID"] = String.Format(BrandSupport.XenVersions.BRANDING_manufacturer + " Xen Service: {0}", sessionqualifier);
             ManagementBaseObject outparam = wmibase.XenBase.InvokeMethod("AddSession", inparam, null);
             UInt32 sessionid = (UInt32)outparam["SessionId"];
             ObjectQuery query = new ObjectQuery("SELECT * from " + BrandSupport.XenVersions.BRANDING_vendorPrefix + "XenStoreSession WHERE SessionId=" + sessionid.ToString());

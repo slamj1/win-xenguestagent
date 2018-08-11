@@ -310,7 +310,7 @@ namespace xenwinsvc
                 clipboardhandler = new ClipboardManager(this);
                 Disposer.Add(clipboardhandler);
                 clipboardhandler.Run();
-                Disposer.Add(WmiBase.Singleton.ListenForEvent("CitrixXenStoreUnsuspendedEvent", new EventArrivedEventHandler(handleUnsuspended)));
+                Disposer.Add(WmiBase.Singleton.ListenForEvent(BrandSupport.XenVersions.BRANDING_vendorPrefix + "XenStoreUnsuspendedEvent", new EventArrivedEventHandler(handleUnsuspended)));
 
                 Refresher.RefreshAll(true);
                 wmisession.Log("running ");

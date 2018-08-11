@@ -115,7 +115,7 @@ namespace xenwinsvc
         {
             this.exceptionhandler = exceptionhandler;
             this.name = name;
-            wmisession = WmiBase.Singleton.GetXenStoreSession("Citrix Xen Service Feature : " + name);
+            wmisession = WmiBase.Singleton.GetXenStoreSession(BrandSupport.XenVersions.BRANDING_manufacturer + " Xen Service Feature : " + name);
             wmisession.Log("New Feature");
             controlKey = wmisession.GetXenStoreItem(control);
             this.controlmustexist = controlmustexist;
