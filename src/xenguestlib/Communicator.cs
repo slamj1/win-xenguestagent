@@ -51,7 +51,7 @@ namespace XenGuestLib
     abstract public class Communicator
     {
         PipeStream Pipe;
-        protected const string PIPENAME =  "CitrixXenGuestAgent";
+        protected const string PIPENAME =  "XCPngXenGuestAgent";
         object comlock;
         byte[] buffer;
         int bufferreadpos;

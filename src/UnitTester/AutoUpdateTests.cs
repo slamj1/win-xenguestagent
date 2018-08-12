@@ -167,7 +167,7 @@ namespace XenUpdater
         [Test]
         public void TestCheckUpdateWithUUID()
         {
-            // If HKEY_LOCAL_MACHINE\Software\Citrix\XenTools\AutoUpdate Identify == YES
+            // If HKEY_LOCAL_MACHINE\Software\XCP-ng\XenTools\AutoUpdate Identify == YES
             // Make a call to the specified URL including the UUID
             
             var xsdict = new Dictionary<string,string>();
@@ -184,8 +184,8 @@ namespace XenUpdater
             xsdict.Add("data/xd/present", "0");
             xsdict.Add("vm", "/vm/11111111-1111-1111-1111-111111111111");
             
-            regdict.Add("HKEY_LOCAL_MACHINE\\Software\\Citrix\\XenTools\\AutoUpdate",new Dictionary<string,string>());
-            regdict["HKEY_LOCAL_MACHINE\\Software\\Citrix\\XenTools\\AutoUpdate"].Add("Identify","YES");
+            regdict.Add("HKEY_LOCAL_MACHINE\\Software\\XCP-ng\\XenTools\\AutoUpdate",new Dictionary<string,string>());
+            regdict["HKEY_LOCAL_MACHINE\\Software\\XCP-ng\\XenTools\\AutoUpdate"].Add("Identify","YES");
             
             Version nv =  new Version(6,6,0,1);
             var au = new AutoUpdate(new MockXenStoreItemFactory(xsdict),
@@ -203,7 +203,7 @@ namespace XenUpdater
         [Test]
         public void TestCheckUpdateWithoutUUID()
         {
-            // If HKEY_LOCAL_MACHINE\Software\Citrix\XenTools\AutoUpdate Identify == NO
+            // If HKEY_LOCAL_MACHINE\Software\XCP-ng\XenTools\AutoUpdate Identify == NO
             // Make a call to the specified URL without including the UUID
             
             var xsdict = new Dictionary<string, string>();
@@ -220,8 +220,8 @@ namespace XenUpdater
             xsdict.Add("data/xd/present", "0");
             xsdict.Add("vm", "/vm/11111111-1111-1111-1111-111111111111");
             
-            regdict.Add("HKEY_LOCAL_MACHINE\\Software\\Citrix\\XenTools\\AutoUpdate", new Dictionary<string, string>());
-            regdict["HKEY_LOCAL_MACHINE\\Software\\Citrix\\XenTools\\AutoUpdate"].Add("Identify", "NO");
+            regdict.Add("HKEY_LOCAL_MACHINE\\Software\\XCP-ng\\XenTools\\AutoUpdate", new Dictionary<string, string>());
+            regdict["HKEY_LOCAL_MACHINE\\Software\\XCP-ng\\XenTools\\AutoUpdate"].Add("Identify", "NO");
             
             Version nv = new Version(6, 6, 0, 1);
             var au = new AutoUpdate(new MockXenStoreItemFactory(xsdict),

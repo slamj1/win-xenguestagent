@@ -114,7 +114,7 @@ namespace xenwinsvc
         {
             this.exceptionhandler = exceptionhandler;
             this.name = name;
-            wmisession = WmiBase.Singleton.GetXenStoreSession("Citrix Xen Service Feature : " + name);
+            wmisession = WmiBase.Singleton.GetXenStoreSession("XCP-ng Xen Service Feature : " + name);
             wmisession.Log("New Feature");
             controlKey = wmisession.GetXenStoreItem(control);
             this.controlmustexist = controlmustexist;
@@ -879,7 +879,7 @@ namespace xenwinsvc
                     }
                 }
 
-                if ((int)Registry.GetValue("HKEY_LOCAL_MACHINE\\Software\\Citrix\\Xentools", "NoRemoteExecution", 0)!=0) {
+                if ((int)Registry.GetValue("HKEY_LOCAL_MACHINE\\Software\\XCP-ng\\Xentools", "NoRemoteExecution", 0)!=0) {
                     this.stderr.value = "VM Blocked Remote Execution By Registry Key";
                     result = FeatureXSBatchCommand.FAILURE;
                     state.value = result;

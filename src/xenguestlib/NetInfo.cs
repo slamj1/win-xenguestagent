@@ -480,7 +480,7 @@ namespace xenwinsvc
         }
 
 
-        const string NETSETTINGSSTORE = @"SOFTWARE\Citrix\XenToolsNetSettings";
+        const string NETSETTINGSSTORE = @"SOFTWARE\XCP-ng\XenToolsNetSettings";
         const string ENUM = @"SYSTEM\CurrentControlSet\Enum\";
         const string CONTROL = @"SYSTEM\CurrentControlSet\Control\";
         const string CLASS = CONTROL + @"Class\";
@@ -490,7 +490,7 @@ namespace xenwinsvc
         const string TCPIP6SRV = @"SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters\Interfaces";
         const string NETBTSRV = @"SYSTEM\CurrentControlSet\Services\NetBT\Parameters\Interfaces";
         const string NSI = CLASS + @"NSI\";
-        const string STORE = @"SOFTWARE\Citrix\XenToolsNetSettings\";
+        const string STORE = @"SOFTWARE\XCP-ng\XenToolsNetSettings\";
         const string STATICIPV4STORE = STORE + @"IPV4";
         const string STATICIPV6STORE = STORE + @"IPV6";
         const string STATICIPV4 = NSI + @"{eb004a00-9b1a-11d4-9123-0050047759bc}\10\";

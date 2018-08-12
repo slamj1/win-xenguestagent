@@ -79,7 +79,7 @@ namespace xenwinsvc
         private ManagementObject getBase()
         {
 
-                ManagementPath mpath = new ManagementPath("CitrixXenStoreBase");
+                ManagementPath mpath = new ManagementPath("XCPngXenStoreBase");
                 ManagementClass manclass = new ManagementClass(scope, mpath, null);
                 ManagementObjectCollection moc = manclass.GetInstances();
                 return getFirst(moc);
@@ -464,7 +464,7 @@ namespace xenwinsvc
 
         public override WmiWatchListener Watch(EventArrivedEventHandler handler)
         {
-            WqlEventQuery eq = new WqlEventQuery("CitrixXenStoreWatchEvent", String.Format("EventId=\"{0}\"", name));
+            WqlEventQuery eq = new WqlEventQuery("XCPngXenStoreWatchEvent", String.Format("EventId=\"{0}\"", name));
             ManagementEventWatcher ev = new ManagementEventWatcher(WmiBase.Singleton.Scope, eq);
             ev.EventArrived += handler;
             return new WmiWatchListener(wmisession, ev, name);
@@ -738,12 +738,12 @@ namespace xenwinsvc
             this.wmibase = wmibase;
             name = sessionqualifier;
 
-            // First check to see if a "Citrix Xen Service" session exists.  If
+            // First check to see if a "XCP-ng Xen Service" session exists.  If
             // so, we use that
             // Otherwise we have to create a new session from scratch
             try
             {
-                ObjectQuery obq = new ObjectQuery(String.Format("SELECT * from CitrixXenStoreSession WHERE Id=\"Citrix Xen Service: {0}\"", sessionqualifier));
+                ObjectQuery obq = new ObjectQuery(String.Format("SELECT * from XCPngXenStoreSession WHERE Id=\"XCP-ng Xen Service: {0}\"", sessionqualifier));
                 ManagementObjectSearcher mobs = new ManagementObjectSearcher(wmibase.Scope, obq); ;
                 session = WmiBase.getFirst(mobs.Get());
                 session.InvokeMethod("EndSession", null);
@@ -752,10 +752,10 @@ namespace xenwinsvc
             {
             }
             ManagementBaseObject inparam = wmibase.XenBase.GetMethodParameters("AddSession");
-            inparam["ID"] = String.Format("Citrix Xen Service: {0}", sessionqualifier);
+            inparam["ID"] = String.Format("XCP-ng Xen Service: {0}", sessionqualifier);
             ManagementBaseObject outparam = wmibase.XenBase.InvokeMethod("AddSession", inparam, null);
             UInt32 sessionid = (UInt32)outparam["SessionId"];
-            ObjectQuery query = new ObjectQuery("SELECT * from CitrixXenStoreSession WHERE SessionId=" + sessionid.ToString());
+            ObjectQuery query = new ObjectQuery("SELECT * from XCPngXenStoreSession WHERE SessionId=" + sessionid.ToString());
             ManagementObjectSearcher objects = new ManagementObjectSearcher(wmibase.Scope, query); ;
             session = WmiBase.getFirst(objects.Get());
         }
