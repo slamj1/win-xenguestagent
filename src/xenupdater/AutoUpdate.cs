@@ -120,10 +120,10 @@ namespace XenUpdater
             xdvdapresent = XSFactory.newXenStoreItem("data/xd/present");
             uuid = XSFactory.newXenStoreItem("vm");
             this.getreg = getreg;
-            int major = (int)getreg.GetReg("HKEY_LOCAL_MACHINE\\SOFTWARE\\Citrix\\XenTools", "MajorVersion", 0);
-            int minor = (int)getreg.GetReg("HKEY_LOCAL_MACHINE\\SOFTWARE\\Citrix\\XenTools", "MinorVersion", 0);
-            int micro = (int)getreg.GetReg("HKEY_LOCAL_MACHINE\\SOFTWARE\\Citrix\\XenTools", "MicroVersion", 0);
-            int build = (int)getreg.GetReg("HKEY_LOCAL_MACHINE\\SOFTWARE\\Citrix\\XenTools", "BuildVersion", 0);
+            int major = (int)getreg.GetReg("HKEY_LOCAL_MACHINE\\SOFTWARE\\XCP-ng\\XenTools", "MajorVersion", 0);
+            int minor = (int)getreg.GetReg("HKEY_LOCAL_MACHINE\\SOFTWARE\\XCP-ng\\XenTools", "MinorVersion", 0);
+            int micro = (int)getreg.GetReg("HKEY_LOCAL_MACHINE\\SOFTWARE\\XCP-ng\\XenTools", "MicroVersion", 0);
+            int build = (int)getreg.GetReg("HKEY_LOCAL_MACHINE\\SOFTWARE\\XCP-ng\\XenTools", "BuildVersion", 0);
             version = new Version(major, minor, micro, build);
             this.Branding = branding;
             
